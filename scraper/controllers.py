@@ -184,8 +184,10 @@ class Scraper(object):
         try:
             r = req.get(url, headers=headers)
         except:
-            print("Twitter weird response. Try to see on browser: https://twitter.com/search?q=%s&src=typd" % urllib.parse.quote(urlGetData))
-            print("Unexpected error:", sys.exc_info()[0])
+            text = 'Twitter weird response. Try to see on browser:'\
+                    +'https://twitter.com/search?q=%s&src=typd'
+            print(text % urllib.parse.quote(url))
+            print('Unexpected error:', sys.exc_info()[0])
             sys.exit()
             return
 
