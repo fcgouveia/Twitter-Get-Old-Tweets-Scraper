@@ -21,11 +21,11 @@ The script can be run with 5 arguments. The **query** and/or **username** argume
 
 | Argument | Format | Usage Example |
 |---|---|---|
-| query ||`python main.py --query "#MarcosNotAHero" --max-tweets 1`|
-| username||`python main.py --username "barackobama" --max-tweets 1`|
+| query | |`python main.py --query "#MarcosNotAHero" --max-tweets 1`|
+| username| |`python main.py --username "barackobama" --max-tweets 1`|
 |since|YYYY-MM-DD|`python main.py --query "Benham Rise" --since 2016-01-01 --max-tweets 1`|
 |since|YYYY-MM-DD|`python main.py --query "Benham Rise" --until 2017-04-01 --max-tweets 1`|
-|max-tweets (*default*: 100)||`python main.py --query "#MarcosNotAHero" --max-tweets 1`|
+|max-tweets (*default*: 100)| |`python main.py --query "#MarcosNotAHero" --max-tweets 1`|
 
 
 ---
