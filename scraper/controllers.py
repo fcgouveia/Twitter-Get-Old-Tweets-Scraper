@@ -7,11 +7,11 @@ from .models import Tweet, TweetCriteria
 
 class Exporter(object):
 
-    def __init__(self, criteria = None, filename = 'tweets_gathered.csv'):
+    def __init__(self, criteria = None, filename = 'tweets_gathered.tsv'):
         file_extension = '.'.split(filename)[-1]
 
         if not file_extension == '.csv':
-            self.filename = 'tweets_gathered.csv'
+            self.filename = 'tweets_gathered.tsv'
         else:
             self.filename = filename
 
@@ -24,13 +24,13 @@ class Exporter(object):
                 'mentions', 'hashtags', 'tweet_id', 'permalink'
             ]
 
-        criteria_string = ','.join(criteria)
+        criteria_string = '\t'.join(criteria)
 
         self.output.write(criteria_string)
 
     def output_to_file(self, tweets):
         for tweet in tweets:
-            format = '\n%s,%s,%s,%d,%d,"%s",%s,%s,%s,"%s",%s'
+            format = '\n"%s"\t"%s"\t"%s"\t"%d"\t"%d"\t"%s"\t"%s"\t"%s"\t"%s"\t"%s"\t"%s"'
             self.output.write((format % \
             (tweet.user, tweet.user_handle,\
             tweet.date_fromtimestamp.strftime('%Y-%m-%d %H:%M'),\
@@ -96,8 +96,8 @@ class Scraper(object):
                 user_id = _.attr('data-user-id')
                 user_handle = _.attr('data-screen-name')
                 username = _.attr('data-name')
-                text = re.sub(r'\s+', ' ', _('p.js-tweet-text').text()\
-                        .replace('# ', '#').replace('@ ', '@'))
+                text = re.sub(r'\s+', ' ', _('p.js-tweet-text').text())#\
+                text = text.replace('# ', '#').replace('@ ', '@').replace('pic.twitter.com/', ' pic.twitter.com/')
                 retweet_id = 'span.ProfileTweet-action--retweet '\
                             + 'span.ProfileTweet-actionCount'
                 retweets = int(_(retweet_id).attr('data-tweet-stat-count')\
