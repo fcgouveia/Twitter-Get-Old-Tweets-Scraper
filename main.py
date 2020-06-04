@@ -62,7 +62,7 @@ def main(argv):
         exporter.close()
 
         text = 'Finished scraping data. Output file generated'\
-            +' "tweets_gathered.csv"'
+            +' "tweets_gathered.tsv"'
         print(text);
     except:
         text = 'Unexpected error. Please try again. For more information on'\
